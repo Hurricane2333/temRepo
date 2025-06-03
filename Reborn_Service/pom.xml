@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ld</groupId>
-    <artifactId>poetry</artifactId>
+    <artifactId>reborn</artifactId>
     <version>2.0</version>
-    <name>POETIZE - 最美博客</name>
-    <description>POETIZE - 最美博客</description>
+    <name>REBORN - 最美博客</name>
+    <description>REBORN - 最美博客</description>
     <packaging>pom</packaging>
 
     <properties>
-        <poetry.version>2.0</poetry.version>
+        <reborn.version>2.0</reborn.version>
         <spring-boot.version>2.7.18</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-jar-plugin.version>3.9.0</maven-jar-plugin.version>
@@ -25,7 +25,7 @@
     </properties>
 
     <modules>
-        <module>poetry-web</module>
+        <module>reborn-web</module>
     </modules>
 
     <dependencyManagement>
@@ -81,8 +81,8 @@
 
             <dependency>
                 <groupId>com.ld</groupId>
-                <artifactId>poetry-web</artifactId>
-                <version>${poetry.version}</version>
+                <artifactId>reborn-web</artifactId>
+                <version>${reborn.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

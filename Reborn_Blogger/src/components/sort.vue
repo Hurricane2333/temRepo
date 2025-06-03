@@ -2,7 +2,7 @@
   <div>
     <!-- 两句诗 -->
     <div class="my-animation-slide-top">
-      <twoPoem></twoPoem>
+      <twoReborn></twoReborn>
     </div>
 
     <div style="background: var(--background);padding-top: 40px;" class="my-animation-slide-bottom">
@@ -37,14 +37,14 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "./common/twoPoem");
+  const twoReborn = () => import( "./common/twoReborn");
   const proTag = () => import( "./common/proTag");
   const articleList = () => import( "./articleList");
   const myFooter = () => import( "./common/myFooter");
 
   export default {
     components: {
-      twoPoem,
+      twoReborn,
       proTag,
       articleList,
       myFooter

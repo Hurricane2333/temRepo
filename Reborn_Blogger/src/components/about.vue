@@ -2,7 +2,7 @@
   <div>
     <!-- 两句诗 -->
     <div class="my-animation-slide-top">
-      <twoPoem :isHitokoto="false"></twoPoem>
+      <twoReborn :isHitokoto="false"></twoReborn>
     </div>
 
     <div style="background: var(--background)" class="my-animation-slide-bottom">
@@ -22,12 +22,12 @@
 </template>
 
 <script>
-  const twoPoem = () => import( "./common/twoPoem");
+  const twoReborn = () => import( "./common/twoReborn");
   const myFooter = () => import( "./common/myFooter");
 
   export default {
     components: {
-      twoPoem,
+      twoReborn,
       myFooter
     },
     data() {

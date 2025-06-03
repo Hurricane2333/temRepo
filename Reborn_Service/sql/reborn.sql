@@ -1,11 +1,11 @@
-CREATE DATABASE IF NOT EXISTS poetize DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS reborn DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 
 
-DROP TABLE IF EXISTS `poetize`.`user`;
+DROP TABLE IF EXISTS `reborn`.`user`;
 
-CREATE TABLE `poetize`.`user` (
+CREATE TABLE `reborn`.`user` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `username` varchar(32) DEFAULT NULL COMMENT '用户名',
   `password` varchar(128) DEFAULT NULL COMMENT '密码',
@@ -29,9 +29,9 @@ CREATE TABLE `poetize`.`user` (
   UNIQUE KEY `uk_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
-DROP TABLE IF EXISTS `poetize`.`article`;
+DROP TABLE IF EXISTS `reborn`.`article`;
 
-CREATE TABLE `poetize`.`article` (
+CREATE TABLE `reborn`.`article` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int NOT NULL COMMENT '用户ID',
   `sort_id` int NOT NULL COMMENT '分类ID',
@@ -56,9 +56,9 @@ CREATE TABLE `poetize`.`article` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章表';
 
-DROP TABLE IF EXISTS `poetize`.`comment`;
+DROP TABLE IF EXISTS `reborn`.`comment`;
 
-CREATE TABLE `poetize`.`comment` (
+CREATE TABLE `reborn`.`comment` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `source` int NOT NULL COMMENT '评论来源标识',
   `type` varchar(32) NOT NULL COMMENT '评论来源类型',
@@ -76,9 +76,9 @@ CREATE TABLE `poetize`.`comment` (
   KEY `source` (`source`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章评论表';
 
-DROP TABLE IF EXISTS `poetize`.`sort`;
+DROP TABLE IF EXISTS `reborn`.`sort`;
 
-CREATE TABLE `poetize`.`sort` (
+CREATE TABLE `reborn`.`sort` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `sort_name` varchar(32) NOT NULL COMMENT '分类名称',
   `sort_description` varchar(256) NOT NULL COMMENT '分类描述',
@@ -88,9 +88,9 @@ CREATE TABLE `poetize`.`sort` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='分类';
 
-DROP TABLE IF EXISTS `poetize`.`label`;
+DROP TABLE IF EXISTS `reborn`.`label`;
 
-CREATE TABLE `poetize`.`label` (
+CREATE TABLE `reborn`.`label` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `sort_id` int NOT NULL COMMENT '分类ID',
   `label_name` varchar(32) NOT NULL COMMENT '标签名称',
@@ -99,9 +99,9 @@ CREATE TABLE `poetize`.`label` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='标签';
 
-DROP TABLE IF EXISTS `poetize`.`tree_hole`;
+DROP TABLE IF EXISTS `reborn`.`tree_hole`;
 
-CREATE TABLE `poetize`.`tree_hole` (
+CREATE TABLE `reborn`.`tree_hole` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `avatar` varchar(256) DEFAULT NULL COMMENT '头像',
   `message` varchar(64) NOT NULL COMMENT '留言',
@@ -111,9 +111,9 @@ CREATE TABLE `poetize`.`tree_hole` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='树洞';
 
-DROP TABLE IF EXISTS `poetize`.`wei_yan`;
+DROP TABLE IF EXISTS `reborn`.`wei_yan`;
 
-CREATE TABLE `poetize`.`wei_yan` (
+CREATE TABLE `reborn`.`wei_yan` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int NOT NULL COMMENT '用户ID',
   `like_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
@@ -128,9 +128,9 @@ CREATE TABLE `poetize`.`wei_yan` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='微言表';
 
-DROP TABLE IF EXISTS `poetize`.`web_info`;
+DROP TABLE IF EXISTS `reborn`.`web_info`;
 
-CREATE TABLE `poetize`.`web_info` (
+CREATE TABLE `reborn`.`web_info` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `web_name` varchar(16) NOT NULL COMMENT '网站名称',
   `web_title` varchar(512) NOT NULL COMMENT '网站信息',
@@ -147,9 +147,9 @@ CREATE TABLE `poetize`.`web_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='网站信息表';
 
-DROP TABLE IF EXISTS `poetize`.`resource_path`;
+DROP TABLE IF EXISTS `reborn`.`resource_path`;
 
-CREATE TABLE `poetize`.`resource_path` (
+CREATE TABLE `reborn`.`resource_path` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `title` varchar(64) NOT NULL COMMENT '标题',
   `classify` varchar(32) DEFAULT NULL COMMENT '分类',
@@ -165,9 +165,9 @@ CREATE TABLE `poetize`.`resource_path` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资源聚合';
 
-DROP TABLE IF EXISTS `poetize`.`resource`;
+DROP TABLE IF EXISTS `reborn`.`resource`;
 
-CREATE TABLE `poetize`.`resource` (
+CREATE TABLE `reborn`.`resource` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int NOT NULL COMMENT '用户ID',
   `type` varchar(32) NOT NULL COMMENT '资源类型',
@@ -183,9 +183,9 @@ CREATE TABLE `poetize`.`resource` (
   UNIQUE KEY `uk_path` (`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资源信息';
 
-DROP TABLE IF EXISTS `poetize`.`history_info`;
+DROP TABLE IF EXISTS `reborn`.`history_info`;
 
-CREATE TABLE `poetize`.`history_info` (
+CREATE TABLE `reborn`.`history_info` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int DEFAULT NULL COMMENT '用户ID',
   `ip` varchar(128) NOT NULL COMMENT 'ip',
@@ -196,9 +196,9 @@ CREATE TABLE `poetize`.`history_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='历史信息';
 
-DROP TABLE IF EXISTS `poetize`.`sys_config`;
+DROP TABLE IF EXISTS `reborn`.`sys_config`;
 
-CREATE TABLE `poetize`.`sys_config` (
+CREATE TABLE `reborn`.`sys_config` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `config_name` varchar(128) NOT NULL COMMENT '名称',
   `config_key` varchar(64) NOT NULL COMMENT '键名',
@@ -207,9 +207,9 @@ CREATE TABLE `poetize`.`sys_config` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='参数配置表';
 
-DROP TABLE IF EXISTS `poetize`.`family`;
+DROP TABLE IF EXISTS `reborn`.`family`;
 
-CREATE TABLE `poetize`.`family` (
+CREATE TABLE `reborn`.`family` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int NOT NULL COMMENT '用户ID',
   `bg_cover` varchar(256) NOT NULL COMMENT '背景封面',
@@ -231,9 +231,9 @@ CREATE TABLE `poetize`.`family` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='家庭信息';
 
 
-DROP TABLE IF EXISTS `poetize`.`im_chat_user_friend`;
+DROP TABLE IF EXISTS `reborn`.`im_chat_user_friend`;
 
-CREATE TABLE `poetize`.`im_chat_user_friend` (
+CREATE TABLE `reborn`.`im_chat_user_friend` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` int NOT NULL COMMENT '用户ID',
   `friend_id` int NOT NULL COMMENT '好友ID',
@@ -245,9 +245,9 @@ CREATE TABLE `poetize`.`im_chat_user_friend` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='好友';
 
-DROP TABLE IF EXISTS `poetize`.`im_chat_group`;
+DROP TABLE IF EXISTS `reborn`.`im_chat_group`;
 
-CREATE TABLE `poetize`.`im_chat_group` (
+CREATE TABLE `reborn`.`im_chat_group` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `group_name` varchar(32) NOT NULL COMMENT '群名称',
   `master_user_id` int NOT NULL COMMENT '群主用户ID',
@@ -261,9 +261,9 @@ CREATE TABLE `poetize`.`im_chat_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='聊天群';
 
-DROP TABLE IF EXISTS `poetize`.`im_chat_group_user`;
+DROP TABLE IF EXISTS `reborn`.`im_chat_group_user`;
 
-CREATE TABLE `poetize`.`im_chat_group_user` (
+CREATE TABLE `reborn`.`im_chat_group_user` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `group_id` int NOT NULL COMMENT '群ID',
   `user_id` int NOT NULL COMMENT '用户ID',
@@ -277,9 +277,9 @@ CREATE TABLE `poetize`.`im_chat_group_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='聊天群成员';
 
-DROP TABLE IF EXISTS `poetize`.`im_chat_user_message`;
+DROP TABLE IF EXISTS `reborn`.`im_chat_user_message`;
 
-CREATE TABLE `poetize`.`im_chat_user_message` (
+CREATE TABLE `reborn`.`im_chat_user_message` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
   `from_id` int NOT NULL COMMENT '发送ID',
   `to_id` int NOT NULL COMMENT '接收ID',
@@ -292,9 +292,9 @@ CREATE TABLE `poetize`.`im_chat_user_message` (
   KEY `union_index` (`to_id`,`message_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单聊记录';
 
-DROP TABLE IF EXISTS `poetize`.`im_chat_user_group_message`;
+DROP TABLE IF EXISTS `reborn`.`im_chat_user_group_message`;
 
-CREATE TABLE `poetize`.`im_chat_user_group_message` (
+CREATE TABLE `reborn`.`im_chat_user_group_message` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
   `group_id` int NOT NULL COMMENT '群ID',
   `from_id` int NOT NULL COMMENT '发送ID',
@@ -309,33 +309,33 @@ CREATE TABLE `poetize`.`im_chat_user_group_message` (
 
 
 
-INSERT INTO `poetize`.`user`(`id`, `username`, `password`, `phone_number`, `email`, `user_status`, `gender`, `open_id`, `admire`, `subscribe`, `avatar`, `introduction`, `user_type`, `update_by`, `deleted`) VALUES (1, 'Sara', '47bce5c74f589f4867dbd57e9ca9f808', '', '', 1, 1, '', '', '', '', '', 0, 'Sara', 0);
+INSERT INTO `reborn`.`user`(`id`, `username`, `password`, `phone_number`, `email`, `user_status`, `gender`, `open_id`, `admire`, `subscribe`, `avatar`, `introduction`, `user_type`, `update_by`, `deleted`) VALUES (1, 'Reborn', '47bce5c74f589f4867dbd57e9ca9f808', '', '', 1, 1, '', '', '', '', '', 0, 'Reborn', 0);
 
-INSERT INTO `poetize`.`web_info`(`id`, `web_name`, `web_title`, `notices`, `footer`, `background_image`, `avatar`, `random_avatar`, `random_name`, `random_cover`, `waifu_json`, `status`) VALUES (1, 'Reborn', 'REBORN', '[]', '云想衣裳花想容， 春风拂槛露华浓。', '', '', '[]', '[]', '[]', '{}', 1);
+INSERT INTO `reborn`.`web_info`(`id`, `web_name`, `web_title`, `notices`, `footer`, `background_image`, `avatar`, `random_avatar`, `random_name`, `random_cover`, `waifu_json`, `status`) VALUES (1, 'Reborn', 'REBORN', '[]', '云想衣裳花想容， 春风拂槛露华浓。', '', '', '[]', '[]', '[]', '{}', 1);
 
-INSERT INTO `poetize`.`family` (`id`, `user_id`, `bg_cover`, `man_cover`, `woman_cover`, `man_name`, `woman_name`, `timing`, `countdown_title`, `countdown_time`, `status`, `family_info`, `like_count`, `create_time`, `update_time`) VALUES (1, 1, '背景封面', '男生头像', '女生头像', 'Sara', 'Abby', '2000-01-01 00:00:00', '春节倒计时', '2025-01-29 00:00:00', 1, '', 0, '2000-01-01 00:00:00', '2000-01-01 00:00:00');
+INSERT INTO `reborn`.`family` (`id`, `user_id`, `bg_cover`, `man_cover`, `woman_cover`, `man_name`, `woman_name`, `timing`, `countdown_title`, `countdown_time`, `status`, `family_info`, `like_count`, `create_time`, `update_time`) VALUES (1, 1, '背景封面', '男生头像', '女生头像', 'Reborn', 'Abby', '2000-01-01 00:00:00', '春节倒计时', '2025-01-29 00:00:00', 1, '', 0, '2000-01-01 00:00:00', '2000-01-01 00:00:00');
 
-INSERT INTO `poetize`.`im_chat_group` (`id`, `group_name`, `master_user_id`, `introduction`, `notice`, `in_type`) VALUES(-1, '公共聊天室', 1, '公共聊天室', '欢迎光临！', 0);
+INSERT INTO `reborn`.`im_chat_group` (`id`, `group_name`, `master_user_id`, `introduction`, `notice`, `in_type`) VALUES(-1, '公共聊天室', 1, '公共聊天室', '欢迎光临！', 0);
 
-insert into `poetize`.`im_chat_group_user` (`id`, `group_id`, `user_id`, `admin_flag`, `user_status`) values(1, -1, 1, 1, 1);
-
-
+insert into `reborn`.`im_chat_group_user` (`id`, `group_id`, `user_id`, `admin_flag`, `user_status`) values(1, -1, 1, 1, 1);
 
 
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (1, 'QQ邮箱号', 'spring.mail.username', '480286684@qq.com', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (2, 'QQ邮箱授权码', 'spring.mail.password', 'giusfgdfbpmucaje', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (3, '邮箱验证码模板', 'user.code.format', '【REBORN】%s为本次验证的验证码，请在5分钟内完成验证。为保证账号安全，请勿泄漏此验证码。', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (4, '邮箱订阅模板', 'user.subscribe.format', '【REBORN】您订阅的专栏【%s】新增一篇文章：%s。', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (5, '默认存储平台', 'store.type', 'local', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (6, '本地存储启用状态', 'local.enable', 'true', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (7, '七牛云存储启用状态', 'qiniu.enable', 'false', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (8, '本地存储上传文件根目录', 'local.uploadUrl', '/home/file/', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (9, '本地存储下载前缀', 'local.downloadUrl', '【https://******.cn/static/】', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (10, '七牛云-accessKey', 'qiniu.accessKey', '', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (11, '七牛云-secretKey', 'qiniu.secretKey', '', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (12, '七牛云-bucket', 'qiniu.bucket', '', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (13, '七牛云-域名', 'qiniu.downloadUrl', '【https://file.******.cn/】', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (15, 'IM-聊天室启用状态', 'im.enable', 'true', '1');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (16, '七牛云上传地址', 'qiniuUrl', 'https://upload.qiniup.com', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (17, '备案号', 'beian', '', '2');
-INSERT INTO `poetize`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (18, '前端静态资源路径前缀', 'webStaticResourcePrefix', '【https://******.cn/static/】', '2');
+
+
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (1, 'QQ邮箱号', 'spring.mail.username', '480286684@qq.com', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (2, 'QQ邮箱授权码', 'spring.mail.password', 'giusfgdfbpmucaje', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (3, '邮箱验证码模板', 'user.code.format', '【REBORN】%s为本次验证的验证码，请在5分钟内完成验证。为保证账号安全，请勿泄漏此验证码。', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (4, '邮箱订阅模板', 'user.subscribe.format', '【REBORN】您订阅的专栏【%s】新增一篇文章：%s。', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (5, '默认存储平台', 'store.type', 'local', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (6, '本地存储启用状态', 'local.enable', 'true', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (7, '七牛云存储启用状态', 'qiniu.enable', 'false', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (8, '本地存储上传文件根目录', 'local.uploadUrl', '/home/file/', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (9, '本地存储下载前缀', 'local.downloadUrl', '【https://******.cn/static/】', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (10, '七牛云-accessKey', 'qiniu.accessKey', '', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (11, '七牛云-secretKey', 'qiniu.secretKey', '', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (12, '七牛云-bucket', 'qiniu.bucket', '', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (13, '七牛云-域名', 'qiniu.downloadUrl', '【https://file.******.cn/】', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (15, 'IM-聊天室启用状态', 'im.enable', 'true', '1');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (16, '七牛云上传地址', 'qiniuUrl', 'https://upload.qiniup.com', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (17, '备案号', 'beian', '', '2');
+INSERT INTO `reborn`.`sys_config` (`id`, `config_name`, `config_key`, `config_value`, `config_type`) VALUES (18, '前端静态资源路径前缀', 'webStaticResourcePrefix', '【https://******.cn/static/】', '2');
